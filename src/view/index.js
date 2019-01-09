@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import handleVal from './handleVal'
 
 class Inflexion extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Inflexion extends Component {
         }
         this.handleOptionValue1 = this.handleOptionValue1.bind(this)
         this.handleOptionValue2 = this.handleOptionValue2.bind(this)
+        this.handleInflexion = this.handleInflexion.bind(this)
     }
 
     handleOptionValue1(val) {
@@ -23,10 +25,14 @@ class Inflexion extends Component {
         })
     }
 
+    handleInflexion(con) {
+        handleVal(con, this.state.selectValueFirst, this.state.selectValueSecond)
+    }
+
     render() {
         return (
             <React.Fragment>
-                <textarea id="inflexion-t" autoFocus ref="inflexion-t"></textarea>
+                <textarea id="inflexion-t" autoFocus ref="inflexion_t"></textarea>
                 <select value={this.state.selectValueFirst} onChange={ (e) => this.handleOptionValue1(e.target.value) }>
                     <option value="G">G调</option>
                     <option value="Ab">Ab调</option>
@@ -55,6 +61,7 @@ class Inflexion extends Component {
                     <option value="F">F调</option>
                     <option value="F#">F#调</option>
                 </select>
+                <button id="inflexion-btn" onClick={ () => this.handleInflexion(this.refs.inflexion_t.value) }>转调</button>
                 <div className="output">
                     
                 </div>
