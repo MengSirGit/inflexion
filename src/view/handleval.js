@@ -79,6 +79,10 @@ function handleVal(con, valF, valS) {
             // console.log(`高音区(升): ${arr[i + 1]}${arr[i + 2]}`)
             _backMode = inflexionAction(valF, valS, `${arr[i + 1]}${arr[i + 2]}`, 'high')
         }
+        // 低音不完整
+        else if (e === ')' && arr[i - 2] !== '(' && arr[i - 3] !== '(') promptWord = '存在低音不完整'
+        // 高音不完整
+        else if (e === ']' && arr[i - 2] !== '[' && arr[i - 3] !== '[') promptWord = '存在高音不完整'
 
         if (_backMode) inflexionMode.push(_backMode)
 
